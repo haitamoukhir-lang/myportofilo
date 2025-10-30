@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haitam Oukhir - Ingénieur en Microélectronique et Radiofréquence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <style>
+        /* ==================== Global Styles ==================== */
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-grey: #2a2a2a;
+            --light-grey: #3a3a3a;
+            --text-light: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --highlight: #4a4a4a;
+            --border-color: #333333;
+            --main-color: #0ef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 6rem 10%;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--light-grey);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background-color: var(--accent-grey);
+            color: var(--text-light);
+            border: 1px solid var(--light-grey);
+            border-radius: 4px;
+            font-size: 1.6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--light-grey);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ==================== Header & Navigation ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 10%;
+            background-color: rgba(10, 10, 10, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-muted);
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .navbar a {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-left: 3.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: var(--text-muted);
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-grey);
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::after, .navbar a.active::after {
+            width: 100%;
+        }
+
+        #menu-icon {
+            font-size: 3.6rem;
+            color: var(--text-light);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* ==================== Home Section ==================== */
+        .home {
+            background: linear-gradient(to right, var(--primary-dark) 60%, var(--secondary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .home-content {
+            flex: 1;
+            min-width: 500px;
+        }
+
+        .home-content h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .home-content h3 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .home-content .multiple-text {
+            color: var(--main-color);
+        }
+
+        .home-content p {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: var(--text-muted);
+        }
+
+        .home-img {
+            flex: 1;
+            text-align: center;
+            min-width: 400px;
+        }
+
+        .home-img img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            border: 10px solid var(--accent-grey);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            animation: floatImage 4s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2.4rem); }
+        }
+
+        .social-media {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4.5rem;
+            height: 4.5rem;
+            background-color: var(--accent-grey);
+            border: 1px solid var(--light-grey);
+            border-radius: 50%;
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover {
+            background-color: var(--light-grey);
+            transform: translateY(-5px);
+        }
+
+        /* ==================== About Section ==================== */
+        .about {
+            background-color: var(--secondary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 500px;
+            padding-left: 5rem;
+        }
+
+        .about-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .about-content p {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* ==================== Education Section ==================== */
+        .education {
+            background-color: var(--primary-dark);
+        }
+
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-box {
+            background-color: var(--accent-grey);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--light-grey);
+            transition: transform 0.3s ease;
+        }
+
+        .education-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .education-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .education-box p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .education-box .date {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* ==================== Experience Section ==================== */
+        .experience {
+            background-color: var(--secondary-dark);
+        }
+
+        .experience-container {
+            max-width: 800px;
+        }
+
+        .experience-box {
+            background-color: var(--accent-grey);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--light-grey);
+        }
+
+        .experience-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .experience-box p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .experience-box .date {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-box ul {
+            margin-left: 2rem;
+        }
+
+        .experience-box li {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        /* ==================== Projects Section ==================== */
+        .projects {
+            background-color: var(--primary-dark);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-box {
+            background-color: var(--accent-grey);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 180px;
+            overflow: hidden;
+            background-color: var(--secondary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-box:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .project-content p {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==================== Skills Section ==================== */
+        .skills {
+            background-color: var(--secondary-dark);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skills-box {
+            background-color: var(--accent-grey);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--light-grey);
+        }
+
+        .skills-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .skills-box ul {
+            list-style: none;
+        }
+
+        .skills-box li {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .skills-box li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        /* ==================== Contact Section ==================== */
+        .contact {
+            background-color: var(--primary-dark);
+        }
+
+        .contact form {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .input-box {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .input-box input, textarea {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            background-color: var(--accent-grey);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .input-box input {
+            width: 49%;
+        }
+
+        textarea {
+            resize: none;
+            height: 180px;
+        }
+
+        form .btn {
+            margin-top: 1.5rem;
+        }
+
+        /* ==================== Footer ==================== */
+        .footer {
+            background-color: var(--secondary-dark);
+            padding: 2rem 10%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-text {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+        }
+
+        .footer-iconTop {
+            margin-top: 1.5rem;
+        }
+
+        .footer-iconTop a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: var(--accent-grey);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-iconTop a:hover {
+            background-color: var(--light-grey);
+        }
+
+        .footer-iconTop a i {
+            font-size: 2rem;
+            color: var(--text-light);
+        }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 991px) {
+            section {
+                padding: 5rem 5%;
+            }
+
+            header {
+                padding: 2rem 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem 5%;
+                background-color: var(--primary-dark);
+                border-top: 1px solid var(--border-color);
+                display: none;
+                flex-direction: column;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .navbar a {
+                display: block;
+                margin: 1.5rem 0;
+                font-size: 1.8rem;
+            }
+
+            .home, .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-content, .about-content {
+                min-width: 100%;
+                padding-left: 0;
+            }
+
+            .home-img, .about-img {
+                min-width: 100%;
+                margin-top: 3rem;
+            }
+
+            .home-img img, .about-img img {
+                max-width: 250px;
+            }
+
+            .input-box input {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 450px) {
+            html {
+                font-size: 55%;
+            }
+
+            .home-content h1 {
+                font-size: 4rem;
+            }
+
+            .home-content h3 {
+                font-size: 2.2rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+                min-height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Haitam <span>Oukhir</span></a>
+        <i class="fas fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Accueil</a>
+            <a href="#about">À propos</a>
+            <a href="#education">Éducation</a>
+            <a href="#experience">Expérience</a>
+            <a href="#projects">Projets</a>
+            <a href="#skills">Compétences</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section (version améliorée) -->
+<section class="home" id="home">
+    <div class="home-content">
+      <h1>Haitam Oukhir</h1>
+      <h3>Étudiant en <span class="multiple-text"></span></h3>
+      <p class="tagline">Passionné par l’innovation en <strong>Télécommunications <strong>Microélectronique</strong>, <strong>Radiofréquence</strong> et <strong>Systèmes Embarqués</strong>.</p>
+  
+      <div class="badges">
+        <span><i class="fa-solid fa-microchip"></i> RF & Circuits</span>
+        <span><i class="fa-solid fa-satellite-dish"></i> Télécommunications</span>
+        <span><i class="fa-solid fa-code"></i> Développement embarqué</span>
+      </div>
+  
+      <p class="intro-text">
+        Avec une forte motivation pour contribuer au développement et à l’optimisation des systèmes de télécommunication, je recherche un stage PFE pour appliquer mes compétences techniques dans un environnement stimulant.
+      </p>
+  
+      <div class="social-media">
+        <a href="mailto:haitamoukhir@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/212622540194"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/haitam-oukhir"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/haitam.oukhir"><i class="fab fa-instagram"></i></a>
+      </div>
+  
+      <div class="btn-group">
+        <a href="Pro.Resume 2.pdf" class="btn" target="_blank"><i class="fa-solid fa-file-pdf"></i> Télécharger CV</a>
+        <a href="#contact" class="btn alt-btn"><i class="fa-solid fa-paper-plane"></i> Me Contacter</a>
+      </div>
+  
+      <div class="stats">
+        <div><h3>+6</h3><p>Projets réalisés</p></div>
+        <div><h3>+5</h3><p>Années d’expérience académique</p></div>
+        <div><h3>+4</h3><p>Certifications </p></div>
+      </div>
+  
+      <a href="#about" class="scroll-down"><i class="fa-solid fa-angles-down"></i></a>
+    </div>
+    </div>
+  </section>
+  
+    
+   <!-- About Section -->
+<section class="about" id="about">
+   
+    </div>
+    <div class="about-content">
+        <h2 class="section-title">À propos de <span>Moi</span></h2>
+        <h3>Étudiant en Master Microélectronique et Radiofréquence</h3>
+        <p>Je suis actuellement étudiant en Master en Microélectronique et Radiofréquence à la Faculté des Sciences de Tétouan. Passionné par les technologies de communication et les systèmes embarqués, je cherche à appliquer mes connaissances dans un environnement professionnel stimulant.</p>
+        <p>Mon objectif est de contribuer au développement de solutions innovantes dans le domaine des télécommunications et de la radiofréquence, en mettant à profit mes compétences techniques et mon esprit d'analyse.</p>
+        <a href="#contact" class="btn">Me Contacter</a>
+    </div>
+</section>
+   <!-- Education Section -->
+<section class="education" id="education">
+    <h2 class="section-title">Mon <span>Éducation</span></h2>
+    <div class="education-container">
+        <div class="education-box">
+            <div class="edu-header">
+                <img src="images/fst.png" alt="FST Tétouan Logo" class="edu-logo">
+                <h3>Master d'Excellence en Microélectronique et Radiofréquence</h3>
+            </div>
+            <p>Faculté des Sciences de Tétouan</p>
+            <p class="date">Présent</p>
+        </div>
+        <div class="education-box">
+            <div class="edu-header">
+                <img src="images/fst.png" alt="FST Tétouan Logo" class="edu-logo">
+                <h3>Licence d'Excellence en Microélectronique et Radiofréquence</h3>
+            </div>
+            <p>Faculté des Sciences de Tétouan</p>
+            <p class="date">2023-2024</p>
+        </div>
+        <div class="education-box">
+            <div class="edu-header">
+                <h3>Baccalauréat en Sciences Physiques</h3>
+            </div>
+            <p>Lycée Qadi Ayad, Tétouan</p>
+            <p class="date">2019-2020</p>
+        </div>
+    </div>
+</section>
+
+
+  <!-- Experience Section -->
+<section class="experience" id="experience">
+    <h2 class="section-title">Mon <span>Expérience</span></h2>
+    <div class="experience-container">
+        <div class="experience-box">
+            <div class="exp-header">
+                <img src="images/club.jpeg" alt="Club Microtech Logo" class="exp-logo">
+                <h3>Events Coordinateur – Club Microtech</h3>
+            </div>
+            <p>Faculté des Sciences de Tétouan, Tétouan, Maroc</p>
+            <p class="date">Avril 2024 - Octobre 2025</p>
+            <ul>
+                <li>Organisation d'ateliers techniques (microcontrôleurs, IoT, capteurs)</li>
+                <li>Encadrement de sessions de formation pour étudiants</li>
+                <li>Participation à des projets collaboratifs en électronique et télécommunication</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+      
+    <section class="projects" id="projects">
+        <h2 class="section-title">Mes <span>Projets</span></h2>
+        <div class="projects-container">
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="images/asterisk.jpg" alt="Réseau VoIP">
+                </div>
+                <div class="project-content">
+                    <h3>Réseau VoIP avec Asterisk</h3>
+                    <p>Configuration et déploiement d'un serveur VoIP basé sur Asterisk. Analyse du trafic avec Wireshark.</p>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="images/atoll.jpeg" alt="Planification Réseau GSM Tanger">
+                </div>
+                <div class="project-content">
+                    <h3>Planification Réseau GSM - Tanger avec Atoll</h3>
+                    <p>Conception et optimisation d’un réseau GSM pour la ville de Tanger en utilisant Atoll. Analyse de la couverture, bilan de liaison et optimisation des cellules pour une performance maximale.</p>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="images/eyedetection.jpg" alt="Vision et Eye-Detection">
+                </div>
+                <div class="project-content">
+                    <h3>Vision et Eye-Detection</h3>
+                    <p>Développement d'un système de détection des yeux et reconnaissance faciale en temps réel à l'aide de Python et OpenCV pour des applications de sécurité et d'interaction intelligente.</p>
+                </div>
+            </div>
+            
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="images/smart_parking.jpg" alt="Smart Parking System">
+                </div>
+                <div class="project-content">
+                    <h3>Smart Parking System</h3>
+                    <p>Développement d'un système de détection et gestion des places en temps réel avec ESP32, RFID et capteurs à ultrasons.</p>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="images/cnc_2d.jpg" alt="CNC 2D">
+                </div>
+                <div class="project-content">
+                    <h3>Conception et Simulation CNC 2D</h3>
+                    <p>Développement d'un système de commande numérique pour fraiseuse 2D avec génération de G-code et simulation de trajectoire.</p>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-img">
+                    <img src="images/fiber.jpg" alt="Sécurité fibre optique">
+                </div>
+                <div class="project-content">
+                    <h3>Sécurité fibre optique</h3>
+                    <p>Étude des principes de transmission optique et des vulnérabilités associées aux réseaux à fibre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">Mes <span>Compétences</span></h2>
+        <div class="skills-container">
+            <div class="skills-box">
+                <h3>Compétences Techniques</h3>
+                <ul>
+                    <li><strong>Domaines:</strong> Télécommunication, conception des circuits RF, systèmes embarqués</li>
+                    <li><strong>Réseaux:</strong> 2G, 3G, 4G, 5G, FDMA, TDMA</li>
+                    <li><strong>Logiciels:</strong> Asterisk, MATLAB, Cisco Packet Tracer, ADS, CST, COMSOL, MS Office</li>
+                    <li><strong>Langages:</strong> Python, C, Assembleur, VHDL</li>
+                </ul>
+            </div>
+            <div class="skills-box">
+                <h3>Compétences Personnelles</h3>
+                <ul>
+                    <li>Communication efficace</li>
+                    <li>Gestion du temps</li>
+                    <li>Adaptabilité</li>
+                    <li>Travail d'équipe</li>
+                </ul>
+            </div>
+            <div class="skills-box">
+                <h3>Certifications</h3>
+                <ul>
+                    <li>GSM(2G)-GPRS (2.5G)-EDGE (2.7G) - Udemy</li>
+                    <li>3G UMTS + 3.8 HSPA + 3G DriveTest - Udemy</li>
+                    <li>4G LTE - Udemy</li>
+                    <li>4G-LTE Radio Frequency Drive Test Analysis - Udemy</li>
+                </ul>
+            </div>
+            <div class="skills-box">
+                <h3>Langues</h3>
+                <ul>
+                    <li>Arabe - Langue maternelle</li>
+                    <li>Français - Niveau B2</li>
+                    <li>Anglais - Niveau B2</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contactez <span>Moi</span> !</h2>
+        <form id="contact-form">
+            <div class="input-box">
+                <input type="text" id="name" placeholder="Nom complet" required>
+                <input type="email" id="email" placeholder="Adresse email" required>
+            </div>
+            <div class="input-box">
+                <input type="text" id="subject" placeholder="Sujet de l'email" required>
+                <input type="text" id="phone" placeholder="Numéro de téléphone">
+            </div>
+            <textarea id="message" placeholder="Votre message" required></textarea>
+            <input type="submit" value="Envoyer le message" class="btn">
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2025 Haitam Oukhir | Tous droits réservés</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu icon
+        let menuIcon = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        };
+
+        // Scroll sections active link
+        let sections = document.querySelectorAll('section');
+        let navLinks = document.querySelectorAll('header nav a');
+
+        window.onscroll = () => {
+            sections.forEach(section => {
+                let top = window.scrollY;
+                let offset = section.offsetTop - 150;
+                let height = section.offsetHeight;
+                let id = section.getAttribute('id');
+
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                    });
+                }
+            });
+
+            // Sticky header
+            let header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 100);
+
+            // Remove toggle icon and navbar when click navbar link
+            menuIcon.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        };
+
+        // Typed JS
+        const typed = new Typed('.multiple-text', {
+            strings: [
+                'Microélectronique',
+                'Radiofréquence',
+                'Systèmes Embarqués',
+                'Télécommunications'
+            ],
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 1000,
+            loop: true
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For now, we'll just show an alert
+            alert(`Merci ${name} pour votre message ! Je vous répondrai dès que possible.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Scroll Reveal Animation
+        ScrollReveal({
+            distance: '80px',
+            duration: 2000,
+            delay: 200,
+            reset: false
+        });
+
+        ScrollReveal().reveal('.home-content, .section-title', { origin: 'top' });
+        ScrollReveal().reveal('.home-img, .education-container, .experience-container, .projects-container, .skills-container, .contact form', { origin: 'bottom' });
+        ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
+        ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
+    </script>
+</body>
+</html>
