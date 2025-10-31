@@ -6,21 +6,23 @@
     <title>Haitam Oukhir - Ingénieur en Microélectronique et Radiofréquence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <style>
         /* ==================== Global Styles ==================== */
         :root {
-            --primary-dark: #0a0a0a;
-            --secondary-dark: #1a1a1a;
-            --accent-grey: #2a2a2a;
-            --light-grey: #3a3a3a;
-            --text-light: #f0f0f0;
-            --text-muted: #a0a0a0;
-            --highlight: #4a4a4a;
-            --border-color: #333333;
-            --main-color: #0ef;
+            --primary-dark: #0a1128;
+            --secondary-dark: #162447;
+            --accent-grey: #1e2a4a;
+            --light-grey: #2a3a5f;
+            --text-light: #e8f1ff;
+            --text-muted: #8b9cb5;
+            --highlight: #3a4a7a;
+            --border-color: #2a3a5f;
+            --main-color: #00e5ff;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -66,7 +68,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background-color: var(--light-grey);
+            background-color: var(--main-color);
         }
 
         .container {
@@ -77,10 +79,11 @@
         .btn {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background-color: var(--accent-grey);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
             color: var(--text-light);
-            border: 1px solid var(--light-grey);
-            border-radius: 4px;
+            border: var(--glass-border);
+            border-radius: 8px;
             font-size: 1.6rem;
             font-weight: 500;
             text-transform: uppercase;
@@ -91,9 +94,9 @@
         }
 
         .btn:hover {
-            background-color: var(--light-grey);
+            background: rgba(0, 229, 255, 0.1);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 229, 255, 0.2);
         }
 
         /* ==================== Header & Navigation ==================== */
@@ -103,12 +106,13 @@
             left: 0;
             width: 100%;
             padding: 2rem 10%;
-            background-color: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 17, 40, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: var(--glass-border);
         }
 
         .logo {
@@ -136,7 +140,7 @@
         }
 
         .navbar a:hover, .navbar a.active {
-            color: var(--text-muted);
+            color: var(--main-color);
         }
 
         .navbar a::after {
@@ -146,7 +150,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--light-grey);
+            background-color: var(--main-color);
             transition: width 0.3s ease;
         }
 
@@ -163,16 +167,36 @@
 
         /* ==================== Home Section ==================== */
         .home {
-            background: linear-gradient(to right, var(--primary-dark) 60%, var(--secondary-dark));
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(180deg); }
         }
 
         .home-content {
             flex: 1;
             min-width: 500px;
+            position: relative;
+            z-index: 2;
         }
 
         .home-content h1 {
@@ -180,6 +204,9 @@
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
+            background: linear-gradient(45deg, var(--text-light), var(--main-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .home-content h3 {
@@ -193,25 +220,168 @@
             color: var(--main-color);
         }
 
-        .home-content p {
+        .tagline {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badges span {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.4rem;
+            border: var(--glass-border);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badges span:hover {
+            background: rgba(0, 229, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
+        }
+
+        .badges span i {
+            color: var(--main-color);
+        }
+
+        .intro-text {
+            color: var(--text-muted);
             font-size: 1.6rem;
             margin-bottom: 2rem;
             max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .social-media {
+            display: flex;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 5rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            border-radius: 50%;
+            font-size: 2rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover {
+            background: var(--main-color);
+            transform: translateY(-5px);
+            color: var(--primary-dark);
+            box-shadow: 0 10px 25px rgba(0, 229, 255, 0.3);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn.primary {
+            background: linear-gradient(45deg, var(--main-color), #6df8ff);
+            color: var(--primary-dark);
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn.alt-btn {
+            background: transparent;
+            border: 2px solid var(--main-color);
+            color: var(--main-color);
+        }
+
+        .btn.alt-btn:hover {
+            background: var(--main-color);
+            color: var(--primary-dark);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stats div {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 150px;
+            border: var(--glass-border);
+            transition: transform 0.3s ease;
+        }
+
+        .stats div:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 229, 255, 0.1);
+        }
+
+        .stats h3 {
+            font-size: 2.4rem;
+            color: var(--main-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats p {
+            font-size: 1.3rem;
             color: var(--text-muted);
+        }
+
+        .scroll-down {
+            display: inline-flex;
+            margin-top: 3rem;
+            font-size: 2.5rem;
+            color: var(--main-color);
+            animation: bounce 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
         }
 
         .home-img {
             flex: 1;
             text-align: center;
             min-width: 400px;
+            position: relative;
+            z-index: 2;
         }
 
         .home-img img {
             width: 100%;
-            max-width: 300px;
+            max-width: 350px;
             border-radius: 50%;
-            border: 10px solid var(--accent-grey);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border: 8px solid var(--glass);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(10, 25, 47, 0.5);
             animation: floatImage 4s ease-in-out infinite;
         }
 
@@ -220,34 +390,9 @@
             50% { transform: translateY(-2.4rem); }
         }
 
-        .social-media {
-            display: flex;
-            margin-bottom: 2rem;
-        }
-
-        .social-media a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 4.5rem;
-            height: 4.5rem;
-            background-color: var(--accent-grey);
-            border: 1px solid var(--light-grey);
-            border-radius: 50%;
-            font-size: 2rem;
-            color: var(--text-light);
-            margin-right: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-media a:hover {
-            background-color: var(--light-grey);
-            transform: translateY(-5px);
-        }
-
         /* ==================== About Section ==================== */
         .about {
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -263,8 +408,10 @@
         .about-img img {
             width: 100%;
             max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            border: var(--glass-border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(10, 25, 47, 0.5);
         }
 
         .about-content {
@@ -281,129 +428,223 @@
         .about-content h3 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
-            color: var(--text-muted);
+            color: var(--main-color);
         }
 
         .about-content p {
             font-size: 1.6rem;
             margin-bottom: 1.5rem;
             color: var(--text-muted);
+            line-height: 1.8;
         }
 
         /* ==================== Education Section ==================== */
         .education {
-            background-color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         }
 
         .education-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .education-box {
-            background-color: var(--accent-grey);
-            padding: 2.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--light-grey);
-            transition: transform 0.3s ease;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(45deg, var(--main-color), #6df8ff);
         }
 
         .education-box:hover {
             transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
+        }
+
+        .edu-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: var(--glass);
+            padding: 0.5rem;
+            border: var(--glass-border);
         }
 
         .education-box h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--text-light);
+            line-height: 1.4;
         }
 
         .education-box p {
             font-size: 1.5rem;
             color: var(--text-muted);
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .education-box .date {
-            font-size: 1.3rem;
-            color: var(--text-muted);
+            font-size: 1.4rem;
+            color: var(--main-color);
             font-weight: 600;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         /* ==================== Experience Section ==================== */
         .experience {
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
         }
 
         .experience-container {
-            max-width: 800px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .experience-box {
-            background-color: var(--accent-grey);
-            padding: 2.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--light-grey);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .experience-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
+        .experience-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(45deg, var(--main-color), #6df8ff);
         }
 
-        .experience-box p {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
+        .experience-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
         }
 
-        .experience-box .date {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            font-weight: 600;
+        .exp-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             margin-bottom: 1.5rem;
         }
 
+        .exp-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: var(--glass);
+            padding: 0.5rem;
+            border: var(--glass-border);
+        }
+
+        .experience-box h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .experience-box > p {
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .experience-box .date {
+            font-size: 1.4rem;
+            color: var(--main-color);
+            font-weight: 600;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
         .experience-box ul {
-            margin-left: 2rem;
+            margin-left: 1rem;
         }
 
         .experience-box li {
             font-size: 1.5rem;
             color: var(--text-muted);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .experience-box li::before {
+            content: '▸';
+            position: absolute;
+            left: -1rem;
+            color: var(--main-color);
+            font-weight: bold;
         }
 
         /* ==================== Projects Section ==================== */
         .projects {
-            background-color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         }
 
         .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .project-box {
-            background-color: var(--accent-grey);
-            border-radius: 10px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            border: var(--glass-border);
         }
 
         .project-box:hover {
             transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
         }
 
         .project-img {
-            height: 180px;
+            height: 200px;
             overflow: hidden;
-            background-color: var(--secondary-dark);
+            background: var(--secondary-dark);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -421,43 +662,53 @@
         }
 
         .project-content {
-            padding: 2rem;
+            padding: 2.5rem;
         }
 
         .project-content h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--text-light);
+            line-height: 1.4;
         }
 
         .project-content p {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         /* ==================== Skills Section ==================== */
         .skills {
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
         }
 
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
         }
 
         .skills-box {
-            background-color: var(--accent-grey);
-            padding: 2.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--light-grey);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .skills-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
         }
 
         .skills-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
             color: var(--text-light);
+            text-align: center;
         }
 
         .skills-box ul {
@@ -465,50 +716,69 @@
         }
 
         .skills-box li {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-muted);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
             padding-left: 2rem;
             position: relative;
+            line-height: 1.6;
         }
 
         .skills-box li::before {
             content: '▸';
             position: absolute;
             left: 0;
-            color: var(--text-muted);
+            color: var(--main-color);
+            font-weight: bold;
+        }
+
+        .skills-box li strong {
+            color: var(--text-light);
         }
 
         /* ==================== Contact Section ==================== */
         .contact {
-            background-color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         }
 
         .contact form {
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 4rem;
+            border-radius: 20px;
+            border: var(--glass-border);
         }
 
         .input-box {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .input-box input, textarea {
             width: 100%;
-            padding: 1.2rem;
+            padding: 1.5rem;
             font-size: 1.5rem;
             color: var(--text-light);
-            background-color: var(--accent-grey);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: var(--glass-border);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--main-color);
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
         }
 
         .input-box input {
-            width: 49%;
+            width: calc(50% - 1rem);
         }
 
         textarea {
@@ -518,19 +788,21 @@
 
         form .btn {
             margin-top: 1.5rem;
+            width: 100%;
         }
 
         /* ==================== Footer ==================== */
         .footer {
-            background-color: var(--secondary-dark);
-            padding: 2rem 10%;
+            background: var(--secondary-dark);
+            padding: 3rem 10%;
             text-align: center;
-            border-top: 1px solid var(--border-color);
+            border-top: var(--glass-border);
         }
 
         .footer-text {
             font-size: 1.4rem;
             color: var(--text-muted);
+            margin-bottom: 1rem;
         }
 
         .footer-iconTop {
@@ -541,15 +813,17 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            padding: 0.8rem;
-            background-color: var(--accent-grey);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
+            padding: 1rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         .footer-iconTop a:hover {
-            background-color: var(--light-grey);
+            background: var(--main-color);
+            transform: translateY(-3px);
         }
 
         .footer-iconTop a i {
@@ -578,9 +852,10 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                padding: 1rem 5%;
-                background-color: var(--primary-dark);
-                border-top: 1px solid var(--border-color);
+                padding: 2rem 5%;
+                background: rgba(10, 17, 40, 0.95);
+                backdrop-filter: blur(10px);
+                border-top: var(--glass-border);
                 display: none;
                 flex-direction: column;
             }
@@ -617,6 +892,12 @@
             .input-box input {
                 width: 100%;
             }
+
+            .edu-header, .exp-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 450px) {
@@ -635,6 +916,11 @@
             section {
                 padding: 4rem 5%;
                 min-height: 60vh;
+            }
+
+            .education-container,
+            .projects-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -660,84 +946,94 @@
     <div class="home-content">
       <h1>Haitam Oukhir</h1>
       <h3>Étudiant en <span class="multiple-text"></span></h3>
-      <p class="tagline">Passionné par l’innovation en <strong>Télécommunications <strong>Microélectronique</strong>, <strong>Radiofréquence</strong> et <strong>Systèmes Embarqués</strong>.</p>
+      <p class="tagline">Passionné par l'innovation en <strong>Microélectronique</strong>, <strong>Radiofréquence</strong> et <strong>Systèmes Embarqués</strong></p>
   
       <div class="badges">
-        <span><i class="fa-solid fa-microchip"></i> RF & Circuits</span>
-        <span><i class="fa-solid fa-satellite-dish"></i> Télécommunications</span>
-        <span><i class="fa-solid fa-code"></i> Développement embarqué</span>
+        <span><i class="fa-solid fa-microchip"></i> Conception RF & Circuits</span>
+        <span><i class="fa-solid fa-satellite-dish"></i> Systèmes de Télécommunication</span>
+        <span><i class="fa-solid fa-code"></i> Développement Embarqué</span>
+        <span><i class="fa-solid fa-wifi"></i> Réseaux & Protocoles</span>
       </div>
   
       <p class="intro-text">
-        Avec une forte motivation pour contribuer au développement et à l’optimisation des systèmes de télécommunication, je recherche un stage PFE pour appliquer mes compétences techniques dans un environnement stimulant.
+        Étudiant passionné en Master de Microélectronique et Radiofréquence, je me spécialise dans la conception de circuits RF, les systèmes de télécommunication et le développement embarqué. Je recherche activement un stage PFE pour appliquer mes compétences techniques dans un environnement professionnel innovant.
       </p>
   
       <div class="social-media">
-        <a href="mailto:haitamoukhir@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://wa.me/212622540194"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.linkedin.com/in/haitam-oukhir"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/haitam.oukhir"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:haitamoukhir@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/212622540194" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/haitam-oukhir" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/haitam.oukhir" title="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
   
       <div class="btn-group">
-        <a href="Pro.Resume 2.pdf" class="btn" target="_blank"><i class="fa-solid fa-file-pdf"></i> Télécharger CV</a>
+        <a href="Pro.Resume 2.pdf" class="btn primary" target="_blank"><i class="fa-solid fa-file-pdf"></i> Télécharger CV</a>
         <a href="#contact" class="btn alt-btn"><i class="fa-solid fa-paper-plane"></i> Me Contacter</a>
       </div>
   
       <div class="stats">
-        <div><h3>+6</h3><p>Projets réalisés</p></div>
-        <div><h3>+5</h3><p>Années d’expérience académique</p></div>
-        <div><h3>+4</h3><p>Certifications </p></div>
+        <div><h3>+6</h3><p>Projets Réalisés</p></div>
+        <div><h3>+5</h3><p>Années d'Études</p></div>
+        <div><h3>+4</h3><p>Certifications</p></div>
+        <div><h3>100%</h3><p>Motivation</p></div>
       </div>
   
       <a href="#about" class="scroll-down"><i class="fa-solid fa-angles-down"></i></a>
     </div>
     </div>
-  </section>
+</section>
   
-    
    <!-- About Section -->
 <section class="about" id="about">
-   
     </div>
     <div class="about-content">
         <h2 class="section-title">À propos de <span>Moi</span></h2>
         <h3>Étudiant en Master Microélectronique et Radiofréquence</h3>
-        <p>Je suis actuellement étudiant en Master en Microélectronique et Radiofréquence à la Faculté des Sciences de Tétouan. Passionné par les technologies de communication et les systèmes embarqués, je cherche à appliquer mes connaissances dans un environnement professionnel stimulant.</p>
-        <p>Mon objectif est de contribuer au développement de solutions innovantes dans le domaine des télécommunications et de la radiofréquence, en mettant à profit mes compétences techniques et mon esprit d'analyse.</p>
-        <a href="#contact" class="btn">Me Contacter</a>
+        <p>Actuellement en Master d'Excellence en Microélectronique et Radiofréquence à la Faculté des Sciences de Tétouan, je me passionne pour les technologies de communication avancées et les systèmes embarqués intelligents.</p>
+        <p>Mon parcours académique m'a permis de développer une expertise solide dans la conception de circuits RF, l'analyse des systèmes de télécommunication et le développement de solutions embarquées innovantes.</p>
+        <p>Je suis constamment à la recherche de nouveaux défis techniques et j'aspire à contribuer au développement de technologies de communication plus efficaces et performantes.</p>
+        <a href="#contact" class="btn primary">Me Contacter</a>
     </div>
 </section>
+
    <!-- Education Section -->
 <section class="education" id="education">
-    <h2 class="section-title">Mon <span>Éducation</span></h2>
+    <h2 class="section-title">Mon <span>Parcours Académique</span></h2>
     <div class="education-container">
         <div class="education-box">
             <div class="edu-header">
                 <img src="images/fst.png" alt="FST Tétouan Logo" class="edu-logo">
-                <h3>Master d'Excellence en Microélectronique et Radiofréquence</h3>
+                <div>
+                    <h3>Master d'Excellence en Microélectronique et Radiofréquence</h3>
+                    <p>Faculté des Sciences de Tétouan</p>
+                </div>
             </div>
-            <p>Faculté des Sciences de Tétouan</p>
-            <p class="date">Présent</p>
+            <p>Spécialisation en conception de circuits RF, systèmes de télécommunication et technologies embarquées.</p>
+            <span class="date">2024 - Présent</span>
         </div>
         <div class="education-box">
             <div class="edu-header">
                 <img src="images/fst.png" alt="FST Tétouan Logo" class="edu-logo">
-                <h3>Licence d'Excellence en Microélectronique et Radiofréquence</h3>
+                <div>
+                    <h3>Licence d'Excellence en Microélectronique et Radiofréquence</h3>
+                    <p>Faculté des Sciences de Tétouan</p>
+                </div>
             </div>
-            <p>Faculté des Sciences de Tétouan</p>
-            <p class="date">2023-2024</p>
+            <p>Formation approfondie en électronique analogique et numérique, traitement du signal et principes des télécommunications.</p>
+            <span class="date">2023 - 2024</span>
         </div>
         <div class="education-box">
             <div class="edu-header">
-                <h3>Baccalauréat en Sciences Physiques</h3>
+                <div>
+                    <h3>Baccalauréat en Sciences Physiques</h3>
+                    <p>Lycée Qadi Ayad, Tétouan</p>
+                </div>
             </div>
-            <p>Lycée Qadi Ayad, Tétouan</p>
-            <p class="date">2019-2020</p>
+            <p>Option Sciences Physiques avec mention très bien, base solide en mathématiques et sciences physiques.</p>
+            <span class="date">2019 - 2020</span>
         </div>
     </div>
 </section>
-
 
   <!-- Experience Section -->
 <section class="experience" id="experience">
@@ -746,21 +1042,24 @@
         <div class="experience-box">
             <div class="exp-header">
                 <img src="images/club.jpeg" alt="Club Microtech Logo" class="exp-logo">
-                <h3>Events Coordinateur – Club Microtech</h3>
+                <div>
+                    <h3>Coordinateur Événements – Club Microtech</h3>
+                    <p>Faculté des Sciences de Tétouan, Tétouan, Maroc</p>
+                </div>
             </div>
-            <p>Faculté des Sciences de Tétouan, Tétouan, Maroc</p>
-            <p class="date">Avril 2024 - Octobre 2025</p>
+            <span class="date">Avril 2024 - Octobre 2025</span>
             <ul>
-                <li>Organisation d'ateliers techniques (microcontrôleurs, IoT, capteurs)</li>
-                <li>Encadrement de sessions de formation pour étudiants</li>
-                <li>Participation à des projets collaboratifs en électronique et télécommunication</li>
+                <li>Organisation et animation d'ateliers techniques spécialisés en microcontrôleurs, IoT et systèmes embarqués</li>
+                <li>Encadrement de sessions de formation pratiques pour les étudiants en électronique et télécommunications</li>
+                <li>Coordination de projets collaboratifs innovants dans les domaines de l'électronique et des télécommunications</li>
+                <li>Développement de contenu pédagogique et technique pour les workshops du club</li>
+                <li>Gestion logistique et promotionnelle des événements techniques du club</li>
             </ul>
         </div>
     </div>
 </section>
 
     <!-- Projects Section -->
-      
     <section class="projects" id="projects">
         <h2 class="section-title">Mes <span>Projets</span></h2>
         <div class="projects-container">
@@ -770,7 +1069,7 @@
                 </div>
                 <div class="project-content">
                     <h3>Réseau VoIP avec Asterisk</h3>
-                    <p>Configuration et déploiement d'un serveur VoIP basé sur Asterisk. Analyse du trafic avec Wireshark.</p>
+                    <p>Configuration et déploiement d'un serveur VoIP basé sur Asterisk avec analyse approfondie du trafic réseau utilisant Wireshark.</p>
                 </div>
             </div>
             <div class="project-box">
@@ -779,7 +1078,7 @@
                 </div>
                 <div class="project-content">
                     <h3>Planification Réseau GSM - Tanger avec Atoll</h3>
-                    <p>Conception et optimisation d’un réseau GSM pour la ville de Tanger en utilisant Atoll. Analyse de la couverture, bilan de liaison et optimisation des cellules pour une performance maximale.</p>
+                    <p>Conception et optimisation complète d'un réseau GSM pour la ville de Tanger en utilisant le logiciel Atoll, incluant l'analyse de couverture et l'optimisation des cellules.</p>
                 </div>
             </div>
             <div class="project-box">
@@ -791,7 +1090,6 @@
                     <p>Développement d'un système de détection des yeux et reconnaissance faciale en temps réel à l'aide de Python et OpenCV pour des applications de sécurité et d'interaction intelligente.</p>
                 </div>
             </div>
-            
             <div class="project-box">
                 <div class="project-img">
                     <img src="images/smart_parking.jpg" alt="Smart Parking System">
@@ -877,7 +1175,7 @@
                 <input type="text" id="phone" placeholder="Numéro de téléphone">
             </div>
             <textarea id="message" placeholder="Votre message" required></textarea>
-            <input type="submit" value="Envoyer le message" class="btn">
+            <input type="submit" value="Envoyer le message" class="btn primary">
         </form>
     </section>
 
